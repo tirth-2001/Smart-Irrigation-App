@@ -49,7 +49,10 @@ const SignupScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.center}>
-            <TouchableOpacity style={styles.btn} activeOpacity={0.7}>
+            <TouchableOpacity
+              style={styles.btn}
+              activeOpacity={0.7}
+              onPress={() => navigation.navigate('AdminHomeScreen')}>
               <Text style={styles.btnText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
