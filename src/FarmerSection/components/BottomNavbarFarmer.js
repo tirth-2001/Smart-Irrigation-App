@@ -1,19 +1,26 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const BottomNavbar = ({navigation}) => {
+const BottomNavbarFarmer = ({navigation}) => {
   const [screen, setScreen] = useState('AdminHomeScreen');
 
   return (
     <View style={[styles.container]}>
-      <View
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('MyFields');
+        }}
         style={[
           styles.btn,
-          {backgroundColor: '#199333', borderTopStartRadius: 20},
+          {
+            backgroundColor: '#199333',
+            borderTopStartRadius: 20,
+            borderTopEndRadius: 20,
+          },
         ]}>
-        <Icon name="home" size={20} color="#fff" />
+        <Icon name="seedling" size={20} color="#fff" />
 
         <Text
           style={{
@@ -22,22 +29,24 @@ const BottomNavbar = ({navigation}) => {
             marginLeft: 10,
             color: '#fff',
           }}>
-          Home
+          My Fields
         </Text>
-      </View>
+      </TouchableOpacity>
 
-      <View
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Farmer Profile');
+        }}
         style={[
           styles.btn,
           {
-            borderRightWidth: 4,
-            borderTopWidth: 2,
-            borderTopRightRadius: 20,
+            borderWidth: 2,
+            borderTopStartRadius: 20,
+            borderTopEndRadius: 20,
             borderColor: '#199333',
           },
         ]}>
         <Icon name="user" size={20} color="#199333" />
-
         <Text
           style={{
             fontSize: 20,
@@ -47,12 +56,12 @@ const BottomNavbar = ({navigation}) => {
           }}>
           Profile
         </Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default BottomNavbar;
+export default BottomNavbarFarmer;
 
 const styles = StyleSheet.create({
   container: {

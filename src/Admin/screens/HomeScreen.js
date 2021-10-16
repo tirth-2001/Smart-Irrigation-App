@@ -9,14 +9,14 @@ import BottomNavbar from '../components/BottomNavbar';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={{flexDirection: 'row', marginTop: 15}}>
         <View style={{marginLeft: 20}}>
           <Image
             source={User}
             style={{
-              width: 40,
-              height: 40,
+              width: 30,
+              height: 30,
             }}
           />
         </View>
@@ -25,24 +25,34 @@ const HomeScreen = ({navigation}) => {
         </View>
       </View>
 
-      <View style={{alignItems: 'center', marginTop: 20}}>
+      <View
+        style={{
+          alignItems: 'center',
+          marginTop: 60,
+        }}>
         <Card
-          title="22+ Farmer Registered"
-          action="See All"
+          title="22+ Farmer Registered for SIS"
+          action="View All ➔"
           img={Farmer}
-          height={155}
-          width={80}
-          top={-60}
-          mb={40}
+          height={245}
+          width={110}
+          top={-64}
+          mb={80}
+          btnWidth={35}
+          name="AllFarmerScreen"
+          navigation={navigation}
         />
         <Card
-          title="80 Gallon Water used"
-          action="See Irrigation Schedule"
+          title="80 Gallon Water Irrigated"
+          action="Irrigation Schedule ➔"
           img={Water}
-          height={75}
-          width={75}
-          top={-25}
+          height={105}
+          width={105}
+          top={-35}
           mt={0}
+          btnWidth={60}
+          name="IrrigationSchedule"
+          navigation={navigation}
         />
       </View>
       <BottomNavbar navigation={navigation} />

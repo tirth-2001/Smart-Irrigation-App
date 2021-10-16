@@ -7,6 +7,12 @@ import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import HomeScreen from './Admin/screens/HomeScreen';
 import ProfileScreen from './Admin/screens/ProfileScreen';
+import AllFarmerScreen from './Admin/screens/AllFarmersScreen';
+import IrrigationSchedule from './Admin/screens/IrrigtionSchedule';
+import BaseScreen from './screens/BaseScreen';
+import HomeFarmer from './FarmerSection/screens/HomeFarmer';
+import MyFields from './FarmerSection/screens/MyFields';
+import NewField from './FarmerSection/screens/NewField';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,12 +20,25 @@ function Routes() {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{header: () => null}}>
+        <Stack.Navigator
+          screenOptions={{header: () => null}}
+          initialRouteName={'BaseScreen'}>
+          {/* Common Screens */}
+          <Stack.Screen name="BaseScreen" component={BaseScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignupScreen" component={SignupScreen} />
-          {/* ADMIN SCREEN */}
+          {/* ADMIN SCREENS */}
           <Stack.Screen name="AdminHomeScreen" component={HomeScreen} />
           <Stack.Screen name="AdminProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="AllFarmerScreen" component={AllFarmerScreen} />
+          <Stack.Screen
+            name="IrrigationSchedule"
+            component={IrrigationSchedule}
+          />
+          {/* Farmer Screens */}
+          <Stack.Screen name="HomeFarmer" component={HomeFarmer} />
+          <Stack.Screen name="MyFields" component={MyFields} />
+          <Stack.Screen name="NewField" component={NewField} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

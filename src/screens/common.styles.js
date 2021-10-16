@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   label: {
     fontSize: 20,
@@ -10,21 +11,30 @@ const styles = StyleSheet.create({
     color: '#505050',
   },
   input: {
-    borderBottomWidth: 1.5,
+    borderBottomWidth: 1,
     fontSize: 18,
     paddingTop: 5,
     paddingBottom: -10,
     marginBottom: 15,
-    color: '#202020',
+    color: '#199333',
+    borderColor: '#7f7f7f',
   },
   btn: {
-    borderWidth: 2,
-    width: '80%',
+    width: '70%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
-    backgroundColor: '#000',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
+    marginTop: 20,
+    elevation: 7,
+    backgroundColor: '#199333',
   },
   center: {
     justifyContent: 'center',
@@ -38,15 +48,16 @@ const styles = StyleSheet.create({
   imgWrapper: {
     position: 'absolute',
     right: 0,
-    bottom: 0,
+    bottom: -90,
+    width: '100%',
   },
   img: {
-    width: 300,
+    width: 450,
     height: 300,
-    opacity: 0.8,
+    opacity: 0.9,
   },
   form: {
-    marginTop: 20,
+    marginTop: 40,
     marginHorizontal: 25,
   },
 });
