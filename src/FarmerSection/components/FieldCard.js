@@ -10,6 +10,12 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 const FieldCard = ({fieldData, navigation}) => {
   const {name, area, crop, status, image} = fieldData || [];
@@ -86,12 +92,48 @@ const FieldCard = ({fieldData, navigation}) => {
         </View>
         <View
           style={{
-            height: 18,
+            height: 22,
             justifyContent: 'center',
             marginBottom: 3,
             marginRight: 10,
           }}>
-          <Icon name="ellipsis-v" size={16} color="#fff" />
+          <Menu style={{height: 22}}>
+            <MenuTrigger
+              children={<Icon name="ellipsis-v" size={20} color="#fff" />}
+            />
+            <MenuOptions
+              style={{
+                borderRadius: 50,
+                backgroundColor: '#fff',
+              }}>
+              <MenuOption onSelect={() => alert(`Save`)}>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 16,
+                    borderColor: '#e3e3e3',
+                    borderBottomWidth: 1,
+                    paddingLeft: 5,
+
+                    paddingBottom: 15,
+                  }}>
+                  Update
+                </Text>
+              </MenuOption>
+              <MenuOption onSelect={() => alert(`Delete`)}>
+                <Text
+                  style={{
+                    color: 'red',
+                    marginBottom: 10,
+                    paddingTop: 5,
+                    paddingLeft: 5,
+                    fontSize: 16,
+                  }}>
+                  Delete
+                </Text>
+              </MenuOption>
+            </MenuOptions>
+          </Menu>
         </View>
       </View>
       <View

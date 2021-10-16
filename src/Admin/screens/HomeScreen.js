@@ -46,8 +46,8 @@ const HomeScreen = ({navigation}) => {
           title="80 Gallon Water Irrigated"
           action="Irrigation Schedule ➔"
           img={Water}
-          height={105}
-          width={105}
+          height={135}
+          width={135}
           top={-35}
           mt={0}
           btnWidth={60}

@@ -26,7 +26,7 @@ const BaseScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.animationWrapper}>
-        <LottieView source={LoadingJson} autoPlay loop />
+        <LottieView source={LoadingJson} autoPlay loop speed={2} />
       </View>
       {/* <Text>BaseScreen</Text> */}
       <Animated.View style={[styles.animatedView, {opacity}]}>

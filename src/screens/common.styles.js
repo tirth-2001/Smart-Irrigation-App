@@ -47,13 +47,13 @@ const styles = StyleSheet.create({
   },
   imgWrapper: {
     position: 'absolute',
-    right: 0,
-    bottom: -90,
-    width: '100%',
+    right: 20,
+    bottom: -10,
+    width: '70%',
   },
   img: {
-    width: 450,
-    height: 300,
+    width: 270,
+    height: 240,
     opacity: 0.9,
   },
   form: {
