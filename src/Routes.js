@@ -13,6 +13,7 @@ import BaseScreen from './screens/BaseScreen';
 import HomeFarmer from './FarmerSection/screens/HomeFarmer';
 import MyFields from './FarmerSection/screens/MyFields';
 import NewField from './FarmerSection/screens/NewField';
+import SingleField from './FarmerSection/screens/SingleField';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,7 @@ function Routes() {
           <Stack.Screen name="HomeFarmer" component={HomeFarmer} />
           <Stack.Screen name="MyFields" component={MyFields} />
           <Stack.Screen name="NewField" component={NewField} />
+          <Stack.Screen name="SingleField" component={SingleField} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

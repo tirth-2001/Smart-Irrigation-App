@@ -47,7 +47,15 @@ const IrrigationCard = ({irrigationData, navigation}) => {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'flex-start',
-          height: 30,
+          height: 40,
+          backgroundColor: '#199333',
+          marginHorizontal: -10,
+          marginTop: -10,
+          paddingTop: 5,
+          paddingLeft: 10,
+          paddingBottom: 15,
+          borderTopStartRadius: 15,
+          borderTopEndRadius: 15,
         }}>
         <View>
           <Image
@@ -63,7 +71,7 @@ const IrrigationCard = ({irrigationData, navigation}) => {
                 fontSize: 18,
                 width: Dimensions.get('window').width / 2 + 8,
                 textAlign: 'justify',
-                color: '#199333',
+                color: '#fff',
               }}>
               {name}
             </Text>

@@ -151,7 +151,7 @@ const FieldCard = ({fieldData, navigation}) => {
             width: '50%',
           }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('LoginScreen')}
+            onPress={() => navigation.navigate('SingleField')}
             activeOpacity={0.7}
             style={[styles.btn, {backgroundColor: '#fff'}]}>
             <Text

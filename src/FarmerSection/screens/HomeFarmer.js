@@ -5,12 +5,22 @@ import {
   StyleSheet,
   Easing,
   TouchableOpacity,
-  Circle,
+  Image,
+  Dimensions,
+  ScrollView,
+  StatusBar,
 } from 'react-native';
 import HeaderFarmer from '../components/HeaderFarmer';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import BottomNavbar from '../components/BottomNavbarFarmer';
 import BottomNavbarFarmer from '../components/BottomNavbarFarmer';
+import Swiper from 'react-native-swiper';
+
+import SwiperCard from '../components/SwiperCard';
+
+// Image Slides
+import Slide1 from '../../../assets/img/slide1.jpg';
+import Slide2 from '../../../assets/img/slide2.jpg';
+import Slide3 from '../../../assets/img/slide3.jpg';
 
 const HomeFarmer = ({navigation}) => {
   const progress = useRef(null);
@@ -21,7 +31,18 @@ const HomeFarmer = ({navigation}) => {
   return (
     <View style={styles.container}>
       <HeaderFarmer />
-      <Text>HomeFarmer</Text>
+
+      <View style={{height: 250}}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={[styles.scrollContainer]}>
+          <SwiperCard imgURL={Slide1} />
+          <SwiperCard imgURL={Slide2} />
+          <SwiperCard imgURL={Slide3} />
+        </ScrollView>
+      </View>
+
       <AnimatedCircularProgress
         ref={progress}
         size={120}
@@ -39,7 +60,15 @@ const HomeFarmer = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: Dimensions.get('window').height + StatusBar.currentHeight,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  scrollContainer: {
+    marginTop: 20,
+    marginHorizontal: 30,
+    width: Dimensions.get('window').width - 20,
   },
 });
 
