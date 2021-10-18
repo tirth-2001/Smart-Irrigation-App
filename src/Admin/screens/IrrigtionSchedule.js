@@ -8,7 +8,7 @@ const IrrigationSchedule = ({navigation}) => {
     {
       id: 1,
       farmerImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/Admin_Panel%2Fuser.png?alt=media&token=ce51a93d-276e-4d42-aecb-ae15f1a0f749',
+        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/IrrigationApp%2Fuser1.png?alt=media&token=1b78d275-5f73-40d0-9653-f4b88632d51a',
       name: 'Ram Pathak',
       date: '01/01/2019',
       startTime: '10:00',
@@ -22,7 +22,7 @@ const IrrigationSchedule = ({navigation}) => {
     {
       id: 2,
       farmerImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/Admin_Panel%2Fuser.png?alt=media&token=ce51a93d-276e-4d42-aecb-ae15f1a0f749',
+        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/IrrigationApp%2Fuser1.png?alt=media&token=1b78d275-5f73-40d0-9653-f4b88632d51a',
       name: 'Shyam Kumar',
       date: '01/01/2019',
       startTime: '10:00',
@@ -36,7 +36,7 @@ const IrrigationSchedule = ({navigation}) => {
     {
       id: 3,
       farmerImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/Admin_Panel%2Fuser.png?alt=media&token=ce51a93d-276e-4d42-aecb-ae15f1a0f749',
+        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/IrrigationApp%2Fuser1.png?alt=media&token=1b78d275-5f73-40d0-9653-f4b88632d51a',
       name: 'Gopal Avasthi',
       date: '01/01/2019',
       startTime: '10:00',
@@ -50,7 +50,7 @@ const IrrigationSchedule = ({navigation}) => {
     {
       id: 4,
       farmerImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/Admin_Panel%2Fuser.png?alt=media&token=ce51a93d-276e-4d42-aecb-ae15f1a0f749',
+        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/IrrigationApp%2Fuser1.png?alt=media&token=1b78d275-5f73-40d0-9653-f4b88632d51a',
       name: 'Gopal Avasthi',
       date: '01/01/2019',
       startTime: '10:00',
@@ -64,7 +64,7 @@ const IrrigationSchedule = ({navigation}) => {
     {
       id: 5,
       farmerImageUrl:
-        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/Admin_Panel%2Fuser.png?alt=media&token=ce51a93d-276e-4d42-aecb-ae15f1a0f749',
+        'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/IrrigationApp%2Fuser1.png?alt=media&token=1b78d275-5f73-40d0-9653-f4b88632d51a',
       name: 'Gopal Avasthi',
       date: '01/01/2019',
       startTime: '10:00',

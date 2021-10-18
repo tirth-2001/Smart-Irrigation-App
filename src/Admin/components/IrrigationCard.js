@@ -65,7 +65,7 @@ const IrrigationCard = ({irrigationData, navigation}) => {
           />
         </View>
         <View>
-          <View style={{marginLeft: 10}}>
+          <View style={{marginLeft: 10, height: 25}}>
             <Text
               style={{
                 fontSize: 18,
