@@ -18,7 +18,6 @@ const Card = ({
   var btnWidthPercent = btnWidth + '%';
   console.log('Nav Name', name);
   return (
-    // <View>
     <LinearGradient
       style={[styles.card, {marginBottom: mb, marginTop: mt}]}
       start={{x: 0, y: 0}}

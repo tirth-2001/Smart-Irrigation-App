@@ -33,9 +33,7 @@ const SingleFieldCard = ({
         styles.card,
         {
           marginBottom: mb,
-          marginTop: mt,
           elevation: elevation,
-          height: cardHeight,
           marginLeft: ml,
         },
       ]}
@@ -49,7 +47,7 @@ const SingleFieldCard = ({
         <Text style={styles.titleText}>{title}</Text>
       </View>
       <TouchableOpacity
-        activeOpacity={0.7}
+        // activeOpacity={0.7}
         // onPress={() => {
         //   navigation.navigate(name);
         // }}
@@ -65,7 +63,7 @@ export default SingleFieldCard;
 const styles = StyleSheet.create({
   card: {
     width: Dimensions.get('window').width * 0.75,
-    height: Dimensions.get('window').height * 0.8,
+    height: Dimensions.get('window').height * 0.7,
     paddingVertical: 25,
     paddingHorizontal: 10,
     borderRadius: 15,
@@ -79,6 +77,7 @@ const styles = StyleSheet.create({
     minHeight: 150,
     marginLeft: -20,
     paddingLeft: 30,
+    marginTop: 80,
   },
   imgWrapper: {
     position: 'absolute',

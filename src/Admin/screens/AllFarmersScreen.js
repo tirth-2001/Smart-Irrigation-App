@@ -63,7 +63,7 @@ const AllFarmerScreen = ({navigation}) => {
         <Header name="All Farmers" navigation={navigation} />
         <View style={styles.allFarmers}>
           {allFarmers.map(farmer => (
-            <FarmerCard id={farmer.id} farmerData={farmer} id={farmer.id} />
+            <FarmerCard id={farmer.id} farmerData={farmer} key={farmer.id} />
           ))}
         </View>
       </LinearGradient>

@@ -9,6 +9,7 @@ import {
   Dimensions,
   ScrollView,
   StatusBar,
+  SafeAreaView,
 } from 'react-native';
 import HeaderFarmer from '../components/HeaderFarmer';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
@@ -29,7 +30,7 @@ const HomeFarmer = ({navigation}) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <HeaderFarmer />
 
       <View style={{height: 250}}>
@@ -54,13 +55,14 @@ const HomeFarmer = ({navigation}) => {
 
       {/* Bottom Navbar */}
       <BottomNavbarFarmer navigation={navigation} />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height + StatusBar.currentHeight,
+    flex: 1,
+    // height: Dimensions.get('window').height + StatusBar.currentHeight,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     alignItems: 'center',

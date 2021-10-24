@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import Routes from './Routes';
 import {MenuProvider} from 'react-native-popup-menu';
