@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: 0,
-    height: 50,
+    height: 70,
     width: '100%',
     flexDirection: 'row',
   },
