@@ -14,6 +14,7 @@ import HomeFarmer from './FarmerSection/screens/HomeFarmer';
 import MyFields from './FarmerSection/screens/MyFields';
 import NewField from './FarmerSection/screens/NewField';
 import SingleField from './FarmerSection/screens/SingleField';
+import TailwindScreen from './FarmerSection/screens/TailwindScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +24,7 @@ function Routes() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{header: () => null}}
-          initialRouteName={'BaseScreen'}>
+          initialRouteName={'TailwindScreen'}>
           {/* Common Screens */}
           <Stack.Screen name="BaseScreen" component={BaseScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -41,6 +42,7 @@ function Routes() {
           <Stack.Screen name="MyFields" component={MyFields} />
           <Stack.Screen name="NewField" component={NewField} />
           <Stack.Screen name="SingleField" component={SingleField} />
+          <Stack.Screen name="TailwindScreen" component={TailwindScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
