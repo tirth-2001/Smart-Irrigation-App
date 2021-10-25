@@ -1250,6 +1250,11 @@
   "resolved" "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-12.9.3.tgz"
   "version" "12.9.3"
 
+"@react-native-firebase/storage@^12.9.3":
+  "integrity" "sha512-tBdpZkM88rGVLzPMRJc2/tG1EqQJvdtGs/iXIPBtuFj7uUfaRXQUAzbGDUgzLfTQ8t2XmSiyNEz1V7wYrHkt7w=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/storage/-/storage-12.9.3.tgz"
+  "version" "12.9.3"
+
 "@react-native/assets@1.0.0":
   "integrity" "sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ=="
   "resolved" "https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz"
