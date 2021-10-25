@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^6.0.8",
     "@react-navigation/native": "^6.0.4",
     "@react-navigation/native-stack": "^6.2.2",
+    "formik": "^2.2.9",
     "lottie-react-native": "^4.1.3",
     "react": "17.0.2",
     "react-native": "0.65.1",
@@ -31,7 +32,8 @@
     "react-native-svg": "^12.1.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^8.1.0",
-    "tailwind-rn": "^3.0.1"
+    "tailwind-rn": "^3.0.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
