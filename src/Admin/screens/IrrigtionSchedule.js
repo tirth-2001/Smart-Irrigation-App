@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import IrrigationCard from '../components/IrrigationCard';
 
@@ -78,7 +78,7 @@ const IrrigationSchedule = ({navigation}) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header name="Irrigation Schedule" navigation={navigation} />
       <ScrollView style={styles.container}>
         {irrigations && irrigations.length > 0 ? (
@@ -94,7 +94,7 @@ const IrrigationSchedule = ({navigation}) => {
         )}
         <View style={styles.dummy}></View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

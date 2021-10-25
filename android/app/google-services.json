@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "412741726886",
+    "firebase_url": "https://ssip-final-default-rtdb.firebaseio.com",
+    "project_id": "ssip-final",
+    "storage_bucket": "ssip-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412741726886:android:394147bb1cd3cdab553a67",
+        "android_client_info": {
+          "package_name": "com.cleandriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412741726886-dqu1lqe4esk58ah1scooe68vkn8816m7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cleandriver",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN5IqD08KCjLcJ3LvljXq_5ZpgdZhX3hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412741726886:android:54edaaab608d4031553a67",
+        "android_client_info": {
+          "package_name": "com.cleanuser.ssip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412741726886-6ada0ql3m1mnhsol9s7a8a69id2poi6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cleanuser.ssip",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN5IqD08KCjLcJ3LvljXq_5ZpgdZhX3hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412741726886:android:92c77ccea5a2d863553a67",
+        "android_client_info": {
+          "package_name": "com.smartirrigationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412741726886-qc81j87m49udh15nbg83hv192sh52tdl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartirrigationapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN5IqD08KCjLcJ3LvljXq_5ZpgdZhX3hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412741726886-5eepab69lhd72cb7af17qcubs2pfe9p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

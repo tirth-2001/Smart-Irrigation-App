@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import FarmerCard from '../components/FarmerCard';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../components/Header';
@@ -54,20 +61,22 @@ const AllFarmerScreen = ({navigation}) => {
   ];
 
   return (
-    <ScrollView>
-      <LinearGradient
-        start={{x: 0, y: 1}}
-        end={{x: 1, y: 1}}
-        colors={['#199333', '#1FAA59', '#38CC77']}
-        style={styles.container}>
-        <Header name="All Farmers" navigation={navigation} />
-        <View style={styles.allFarmers}>
-          {allFarmers.map(farmer => (
-            <FarmerCard id={farmer.id} farmerData={farmer} key={farmer.id} />
-          ))}
-        </View>
-      </LinearGradient>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <LinearGradient
+          start={{x: 0, y: 1}}
+          end={{x: 1, y: 1}}
+          colors={['#199333', '#1FAA59', '#38CC77']}
+          style={styles.container}>
+          <Header name="All Farmers" navigation={navigation} />
+          <View style={styles.allFarmers}>
+            {allFarmers.map(farmer => (
+              <FarmerCard id={farmer.id} farmerData={farmer} key={farmer.id} />
+            ))}
+          </View>
+        </LinearGradient>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

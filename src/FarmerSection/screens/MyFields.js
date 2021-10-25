@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import FieldCard from '../components/FieldCard';
 import FieldFab from '../components/FieldFab';
@@ -41,7 +41,7 @@ const MyFields = ({navigation}) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <Header name="My Fields" navigation={navigation} />
         <View style={styles.fields}>
@@ -52,7 +52,7 @@ const MyFields = ({navigation}) => {
         </View>
       </ScrollView>
       <FieldFab navigation={navigation} />
-    </View>
+    </SafeAreaView>
   );
 };
 

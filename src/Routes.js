@@ -24,7 +24,7 @@ function Routes() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{header: () => null}}
-          initialRouteName={'TailwindScreen'}>
+          initialRouteName={'BaseScreen'}>
           {/* Common Screens */}
           <Stack.Screen name="BaseScreen" component={BaseScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />

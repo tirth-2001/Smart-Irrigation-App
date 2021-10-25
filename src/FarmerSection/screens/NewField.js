@@ -17,7 +17,7 @@ import styles from '../../screens/common.styles';
 
 const NewField = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header name="Add New Field" navigation={navigation} />
       <ScrollView style={styles.form}>
         <View>
@@ -76,7 +76,7 @@ const NewField = ({navigation}) => {
       {/* <View style={styles.imgWrapper}>
         <Image source={Farm} style={styles.img} />
       </View> */}
-    </View>
+    </SafeAreaView>
   );
 };
 
