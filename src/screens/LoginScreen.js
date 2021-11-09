@@ -74,7 +74,7 @@ const LoginScreen = ({navigation}) => {
               )}
               <TouchableOpacity
                 style={{position: 'absolute', bottom: -12, right: 0}}>
-                <Text>Forgot Password?11</Text>
+                <Text>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
 

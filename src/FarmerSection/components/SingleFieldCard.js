@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   View,
   Text,
@@ -6,8 +6,10 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+} from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import tailwind from 'tailwind-rn'
 
 const SingleFieldCard = ({
   title,
@@ -21,10 +23,9 @@ const SingleFieldCard = ({
   elevation = 0,
   cardHeight,
   ml = -20,
+  cardData,
   gradientArray = ['#199333', '#1FAA59', '#38CC77'],
-
   name,
-  navigation,
 }) => {
   return (
     // <View>
@@ -46,6 +47,27 @@ const SingleFieldCard = ({
       <View style={styles.title}>
         <Text style={styles.titleText}>{title}</Text>
       </View>
+      <View>
+        {cardData &&
+          cardData.map((item, index) => {
+            return (
+              <View
+                key={index}
+                style={tailwind(
+                  'text-white flex flex-wrap flex-row my-2 items-center mb-6',
+                )}>
+                <Icon name={item.icon} size={28} color="#fff" />
+                <Text
+                  style={tailwind('text-white px-3 text-lg font-bold italic')}>
+                  {item.title} -
+                </Text>
+                <Text style={tailwind('text-white text-xl')}>
+                  {item.value} {item.unit}
+                </Text>
+              </View>
+            )
+          })}
+      </View>
       <TouchableOpacity
         // activeOpacity={0.7}
         // onPress={() => {
@@ -55,13 +77,15 @@ const SingleFieldCard = ({
         <Text style={styles.actionText}>{action}</Text>
       </TouchableOpacity>
     </LinearGradient>
-  );
-};
+  )
+}
 
-export default SingleFieldCard;
+export default SingleFieldCard
 
 const styles = StyleSheet.create({
   card: {
+    display: 'flex',
+    justifyContent: 'space-around',
     width: Dimensions.get('window').width * 0.75,
     height: Dimensions.get('window').height * 0.7,
     paddingVertical: 25,
@@ -116,4 +140,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
     shadowRadius: 22,
   },
-});
+})

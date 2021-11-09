@@ -1,22 +1,22 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from 'react'
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 // ALL SCREENS
-import LoginScreen from './screens/LoginScreen';
-import SignupScreen from './screens/SignupScreen';
-import HomeScreen from './Admin/screens/HomeScreen';
-import ProfileScreen from './Admin/screens/ProfileScreen';
-import AllFarmerScreen from './Admin/screens/AllFarmersScreen';
-import IrrigationSchedule from './Admin/screens/IrrigtionSchedule';
-import BaseScreen from './screens/BaseScreen';
-import HomeFarmer from './FarmerSection/screens/HomeFarmer';
-import MyFields from './FarmerSection/screens/MyFields';
-import NewField from './FarmerSection/screens/NewField';
-import SingleField from './FarmerSection/screens/SingleField';
-import TailwindScreen from './FarmerSection/screens/TailwindScreen';
+import LoginScreen from './screens/LoginScreen'
+import SignupScreen from './screens/SignupScreen'
+import HomeScreen from './Admin/screens/HomeScreen'
+import ProfileScreen from './Admin/screens/ProfileScreen'
+import AllFarmerScreen from './Admin/screens/AllFarmersScreen'
+import IrrigationSchedule from './Admin/screens/IrrigtionSchedule'
+import BaseScreen from './screens/BaseScreen'
+import HomeFarmer from './FarmerSection/screens/HomeFarmer'
+import MyFields from './FarmerSection/screens/MyFields'
+import NewField from './FarmerSection/screens/NewField'
+import SingleField from './FarmerSection/screens/SingleField'
+import FarmerProfile from './FarmerSection/screens/FarmerProfile'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 function Routes() {
   return (
@@ -42,11 +42,11 @@ function Routes() {
           <Stack.Screen name="MyFields" component={MyFields} />
           <Stack.Screen name="NewField" component={NewField} />
           <Stack.Screen name="SingleField" component={SingleField} />
-          <Stack.Screen name="TailwindScreen" component={TailwindScreen} />
+          <Stack.Screen name="FarmerProfile" component={FarmerProfile} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
-  );
+  )
 }
 
-export default Routes;
+export default Routes

@@ -1,27 +1,28 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
-import LottieView from 'lottie-react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import LoadingJson from '../../assets/lottie/loading.json';
+import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native'
+import LottieView from 'lottie-react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import LoadingJson from '../../assets/lottie/loading.json'
+import {useAuth} from '../context/authContext'
 
 const BaseScreen = ({navigation}) => {
-  const opacity = React.useState(new Animated.Value(0))[0];
+  const {currentUser} = useAuth()
+  const opacity = React.useState(new Animated.Value(0))[0]
 
   const fadeIn = () => {
     Animated.timing(opacity, {
       toValue: 1,
       duration: 2000,
       useNativeDriver: true,
-    }).start();
-  };
+    }).start()
+  }
 
   // function to fade in the view after delay of 3 seconds
   React.useEffect(() => {
     setTimeout(() => {
-      fadeIn();
-    }, 1500);
-  }, []);
+      fadeIn()
+    }, 1500)
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -31,7 +32,11 @@ const BaseScreen = ({navigation}) => {
       {/* <Text>BaseScreen</Text> */}
       <Animated.View style={[styles.animatedView, {opacity}]}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('HomeFarmer')}
+          onPress={() => {
+            currentUser
+              ? navigation.navigate('HomeFarmer')
+              : navigation.navigate('LoginScreen')
+          }}
           activeOpacity={0.7}
           style={[styles.btn, {backgroundColor: '#199333'}]}>
           <Icon name="leaf" size={20} color="#fff" />
@@ -47,7 +52,11 @@ const BaseScreen = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LoginScreen')}
+          onPress={() => {
+            currentUser
+              ? navigation.navigate('AdminHomeScreen')
+              : navigation.navigate('LoginScreen')
+          }}
           activeOpacity={0.7}
           style={[
             styles.btn,
@@ -67,8 +76,8 @@ const BaseScreen = ({navigation}) => {
         </TouchableOpacity>
       </Animated.View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -108,6 +117,6 @@ const styles = StyleSheet.create({
 
     // elevation: 7,
   },
-});
+})
 
-export default BaseScreen;
+export default BaseScreen

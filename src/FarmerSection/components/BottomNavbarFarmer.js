@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native'
 
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const BottomNavbarFarmer = ({navigation}) => {
-  const [screen, setScreen] = useState('AdminHomeScreen');
+  const [screen, setScreen] = useState('AdminHomeScreen')
 
   return (
     <View style={[styles.container]}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('MyFields');
+          navigation.navigate('MyFields')
         }}
         style={[
           styles.btn,
@@ -35,7 +41,7 @@ const BottomNavbarFarmer = ({navigation}) => {
 
       <TouchableOpacity
         onPress={() => {
-          console.log('Farmer Profile');
+          navigation.navigate('FarmerProfile')
         }}
         style={[
           styles.btn,
@@ -58,16 +64,16 @@ const BottomNavbarFarmer = ({navigation}) => {
         </Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
-export default BottomNavbarFarmer;
+export default BottomNavbarFarmer
 
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: 0,
-    height: 70,
+    height: Dimensions.get('window').height * 0.07,
     width: '100%',
     flexDirection: 'row',
   },
@@ -77,4 +83,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-});
+})

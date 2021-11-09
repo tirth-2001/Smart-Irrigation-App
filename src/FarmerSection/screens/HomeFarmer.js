@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react'
 import {
   View,
   Text,
@@ -10,38 +10,41 @@ import {
   ScrollView,
   StatusBar,
   SafeAreaView,
-} from 'react-native';
-import HeaderFarmer from '../components/HeaderFarmer';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import BottomNavbarFarmer from '../components/BottomNavbarFarmer';
-import Swiper from 'react-native-swiper';
+  FlatList,
+} from 'react-native'
+import HeaderFarmer from '../components/HeaderFarmer'
+import {AnimatedCircularProgress} from 'react-native-circular-progress'
+import BottomNavbarFarmer from '../components/BottomNavbarFarmer'
+import Swiper from 'react-native-swiper'
 
-import SwiperCard from '../components/SwiperCard';
+import SwiperCard from '../components/SwiperCard'
 
 // Image Slides
-import Slide1 from '../../../assets/img/slide1.jpg';
-import Slide2 from '../../../assets/img/slide2.jpg';
-import Slide3 from '../../../assets/img/slide3.jpg';
+import Slide1 from '../../../assets/img/slide1.jpg'
+import Slide2 from '../../../assets/img/slide2.jpg'
+import Slide3 from '../../../assets/img/slide3.jpg'
+import tailwind from 'tailwind-rn'
 
 const HomeFarmer = ({navigation}) => {
-  const progress = useRef(null);
+  const progress = useRef(null)
   useEffect(() => {
-    progress.current.animate(100, 3000, Easing.quad);
-  }, []);
+    progress.current.animate(100, 3000, Easing.quad)
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
       <HeaderFarmer />
 
       <View style={{height: 250}}>
-        <ScrollView
+        <FlatList
+          style={tailwind('mt-8 mx-2 flex flex-1')}
+          data={[Slide1, Slide2, Slide3]}
+          ItemSeparatorComponent={() => <View style={tailwind('mx-2')} />}
           horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[styles.scrollContainer]}>
-          <SwiperCard imgURL={Slide1} />
-          <SwiperCard imgURL={Slide2} />
-          <SwiperCard imgURL={Slide3} />
-        </ScrollView>
+          pagingEnabled
+          showsHorizontalScrollIndicator={true}
+          renderItem={({item}) => <SwiperCard imgURL={item} />}
+        />
       </View>
 
       <AnimatedCircularProgress
@@ -56,8 +59,8 @@ const HomeFarmer = ({navigation}) => {
       {/* Bottom Navbar */}
       <BottomNavbarFarmer navigation={navigation} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -72,6 +75,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     width: Dimensions.get('window').width - 20,
   },
-});
+})
 
-export default HomeFarmer;
+export default HomeFarmer

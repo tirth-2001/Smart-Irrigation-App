@@ -1,11 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const Header = ({name, navigation}) => {
   const goBack = () => {
-    navigation.goBack();
-  };
+    navigation.goBack()
+  }
 
   return (
     <View style={styles.container}>
@@ -18,10 +18,10 @@ const Header = ({name, navigation}) => {
         <Text style={styles.text}>{name}</Text>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
 
 const styles = StyleSheet.create({
   container: {
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '700',
   },
-});
+})

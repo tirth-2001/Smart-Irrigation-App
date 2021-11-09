@@ -15,9 +15,11 @@ import styles from './common.styles'
 import {Formik} from 'formik'
 import {signupValidationSchema} from '../utils/validation'
 import {useAuth} from '../context/authContext'
+import {useAddDataFirebase} from '../hooks'
 
 const SignupScreen = ({navigation}) => {
-  const {signup} = useAuth()
+  const {signup, currentUser} = useAuth()
+  const {newFarmer} = useAddDataFirebase()
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imgWrapper}>
@@ -29,18 +31,20 @@ const SignupScreen = ({navigation}) => {
         {/* Formik */}
         <Formik
           initialValues={{
-            name: '',
-            password: '',
-            name: '',
-            city: '',
-            phone: '',
+            name: 'ABC',
+            password: 'password',
+            email: 'user1@gmail.com',
+            city: 'city',
+            phone: '12121212',
           }}
           validationSchema={signupValidationSchema}
           onSubmit={async values => {
             console.log(values)
             try {
-              await signup(values.email, values.password)
-              navigation.navigate('AdminHomeScreen')
+              const response = await signup(values.email, values.password)
+              const {uid} = response.user
+              await newFarmer(values, uid)
+              navigation.navigate('HomeFarmer')
             } catch (error) {
               console.log(error)
             }
