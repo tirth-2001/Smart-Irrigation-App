@@ -1,2 +1,2 @@
 export * from './useUploadImage'
-export * from './useAddDataFirebase'
+export * from './useFirebase'

@@ -1,13 +1,26 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image, SafeAreaView} from 'react-native';
-import Card from '../components/Card';
+import React, {useState, useEffect} from 'react'
+import {View, Text, StyleSheet, Image, SafeAreaView} from 'react-native'
+import Card from '../components/Card'
 
-import User from '../../../assets/img/user.png';
-import Farmer from '../../../assets/img/Farmer1.png';
-import Water from '../../../assets/img/water.png';
-import BottomNavbar from '../components/BottomNavbar';
+import User from '../../../assets/img/user.png'
+import Farmer from '../../../assets/img/Farmer1.png'
+import Water from '../../../assets/img/water.png'
+import BottomNavbar from '../components/BottomNavbar'
+import {useFirebase} from '../../hooks'
 
 const HomeScreen = ({navigation}) => {
+  const {totalWater, farmers: allFarmers} = useFirebase()
+  // const [allFarmers, setAllFarmers] = useState([])
+  // const [totalWater, setTotalWater] = useState(0)
+
+  // const preloadStatistic = async () => {
+  //   setTotalWater(await getTotalWaterIrrigation())
+  // }
+
+  // useEffect(() => {
+  //   preloadStatistic()
+  // }, [])
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={{flexDirection: 'row', marginTop: 15}}>
@@ -31,7 +44,7 @@ const HomeScreen = ({navigation}) => {
           marginTop: 60,
         }}>
         <Card
-          title="22+ Farmer Registered for SIS"
+          title={`${allFarmers?.length}+ Farmer Registered for SIS`}
           action="View All ➔"
           img={Farmer}
           height={245}
@@ -43,7 +56,7 @@ const HomeScreen = ({navigation}) => {
           navigation={navigation}
         />
         <Card
-          title="80 Gallon Water Irrigated"
+          title={`${totalWater} Gallon Water Irrigated`}
           action="Irrigation Schedule ➔"
           img={Water}
           height={135}
@@ -57,9 +70,9 @@ const HomeScreen = ({navigation}) => {
       </View>
       <BottomNavbar navigation={navigation} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default HomeScreen;
+export default HomeScreen
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})

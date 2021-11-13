@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Text,
@@ -7,11 +7,21 @@ import {
   TouchableNativeFeedback,
   Dimensions,
   TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import tw from 'tailwind-react-native-classnames'
+import {useNavigation} from '@react-navigation/native'
 
-const FarmerCard = ({farmerData, navigation}) => {
-  const {name, id, profileImage} = farmerData || [];
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu'
+
+const FarmerCard = ({farmerData}) => {
+  const navigation = useNavigation()
+  const {name, id, profileImage} = farmerData || []
 
   return (
     <View
@@ -61,25 +71,56 @@ const FarmerCard = ({farmerData, navigation}) => {
         </View>
       </View>
 
-      <TouchableOpacity
-        // onPress={() => navigation.navigate('LoginScreen')}
-        activeOpacity={0.7}
-        style={[styles.btn, {backgroundColor: '#199333'}]}>
-        <Text
+      <Menu>
+        <MenuTrigger
+          children={
+            <>
+              <View
+                // onPress={() => navigation.navigate('LoginScreen')}
+                activeOpacity={0.7}
+                style={[styles.btn, {backgroundColor: '#199333'}]}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 'bold',
+                    marginLeft: 7,
+                    marginRight: 7,
+                    color: '#fff',
+                  }}>
+                  View Fields
+                </Text>
+                <Icon name="arrow-right" size={16} color="#fff" />
+              </View>
+            </>
+          }
+        />
+        <MenuOptions
           style={{
-            fontSize: 14,
-            fontWeight: 'bold',
-            marginLeft: 7,
-            marginRight: 7,
-            color: '#fff',
+            borderRadius: 50,
+            backgroundColor: '#fff',
           }}>
-          View Fields
-        </Text>
-        <Icon name="arrow-right" size={16} color="#fff" />
-      </TouchableOpacity>
+          {farmerData?.fields?.map((fieldData, index) => (
+            <MenuOption
+              key={index}
+              onSelect={() => navigation.navigate('SingleField', {fieldData})}>
+              <Text
+                style={{
+                  marginTop: 5,
+                  fontSize: 16,
+                  borderColor: '#e3e3e3',
+                  borderBottomWidth: 1,
+                  paddingLeft: 5,
+                  paddingBottom: 15,
+                }}>
+                <Text style={tw`font-bold`}>{fieldData?.fieldName}</Text> Field
+              </Text>
+            </MenuOption>
+          ))}
+        </MenuOptions>
+      </Menu>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   btn: {
@@ -99,6 +140,6 @@ const styles = StyleSheet.create({
 
     // elevation: 7,
   },
-});
+})
 
-export default FarmerCard;
+export default FarmerCard

@@ -23,6 +23,7 @@
     "react-native": "0.65.1",
     "react-native-animate-number": "^0.1.2",
     "react-native-animated-numbers": "^0.2.0",
+    "react-native-bouncy-checkbox": "^2.1.7",
     "react-native-card-stack-swiper": "^1.2.5",
     "react-native-circular-progress": "^1.3.7",
     "react-native-gesture-handler": "^1.10.3",
@@ -37,6 +38,7 @@
     "react-native-svg": "^12.1.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^8.1.0",
+    "tailwind-react-native-classnames": "^1.5.1",
     "tailwind-rn": "^3.0.1",
     "yup": "^0.32.11"
   },

@@ -12,7 +12,7 @@ const MyFields = ({navigation}) => {
 
   useEffect(() => {
     const subscription = database.farmers
-      .doc(currentUser.uid)
+      .doc(currentUser?.uid)
       .onSnapshot(snapshot => {
         const allFields = snapshot.data().fields
 

@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react'
-// import auth from '@react-native-firebase/auth'
 import {firebaseAuth as auth} from '../config/firebase'
 
 const AuthContext = React.createContext()
@@ -12,7 +11,7 @@ export function AuthProvider({children}) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  console.log('Current User', currentUser)
+  console.log('Current User Object', currentUser)
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -37,6 +36,7 @@ export function AuthProvider({children}) {
 
   const value = {
     currentUser,
+    setCurrentUser,
     login,
     signup,
     logout,

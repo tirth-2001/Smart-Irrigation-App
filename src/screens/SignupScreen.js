@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   View,
   Text,
@@ -15,11 +15,14 @@ import styles from './common.styles'
 import {Formik} from 'formik'
 import {signupValidationSchema} from '../utils/validation'
 import {useAuth} from '../context/authContext'
-import {useAddDataFirebase} from '../hooks'
+import {useFirebase} from '../hooks'
+import BouncyCheckbox from 'react-native-bouncy-checkbox'
+import tw from 'tailwind-react-native-classnames'
 
 const SignupScreen = ({navigation}) => {
   const {signup, currentUser} = useAuth()
-  const {newFarmer} = useAddDataFirebase()
+  const {newFarmer} = useFirebase()
+  const [isAdmin, setIsAdmin] = useState(false)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imgWrapper}>
@@ -36,6 +39,7 @@ const SignupScreen = ({navigation}) => {
             email: 'user1@gmail.com',
             city: 'city',
             phone: '12121212',
+            isAdmin: false,
           }}
           validationSchema={signupValidationSchema}
           onSubmit={async values => {
@@ -43,7 +47,7 @@ const SignupScreen = ({navigation}) => {
             try {
               const response = await signup(values.email, values.password)
               const {uid} = response.user
-              await newFarmer(values, uid)
+              await newFarmer(values, uid, isAdmin)
               navigation.navigate('HomeFarmer')
             } catch (error) {
               console.log(error)
@@ -128,6 +132,23 @@ const SignupScreen = ({navigation}) => {
                   </Text>
                 )}
               </View>
+              <View style={tw`flex flex-row mt-2 items-center`}>
+                <BouncyCheckbox
+                  size={25}
+                  fillColor="#199333"
+                  unfillColor="#FFFFFF"
+                  iconStyle={{borderColor: '#199333'}}
+                  onPress={isChecked => {
+                    console.log(isChecked)
+                    setIsAdmin(isChecked)
+                  }}
+                  isChecked={isAdmin}
+                />
+                <Text style={tw`text-lg -ml-2`}>
+                  {!isAdmin ? 'I am a farmer' : 'I am admin'}
+                </Text>
+              </View>
+
               <View style={styles.center}>
                 <TouchableOpacity
                   style={styles.btn}

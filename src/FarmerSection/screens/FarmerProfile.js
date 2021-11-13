@@ -25,6 +25,7 @@ const FarmerProfile = ({navigation}) => {
       <View style={tailwind('flex flex-col justify-between mx-2')}>
         <Text style={tailwind('text-lg text-gray-900 font-bold')}>
           Email : {currentUser?.email}
+          Role : {currentUser?.isAdmin}
         </Text>
 
         <TouchableOpacity

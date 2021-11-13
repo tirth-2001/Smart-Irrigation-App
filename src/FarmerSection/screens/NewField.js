@@ -18,14 +18,14 @@ import * as Progress from 'react-native-progress'
 import tailwind from 'tailwind-rn'
 import {Formik} from 'formik'
 
-import {useUploadImage, useAddDataFirebase} from '../../hooks'
+import {useUploadImage, useFirebase} from '../../hooks'
 
 import styles from '../../screens/common.styles'
 import {newFieldValidationSchema} from '../../utils/validation'
 import {database} from '../../config'
 
 const NewField = ({navigation}) => {
-  const {newField} = useAddDataFirebase()
+  const {newField} = useFirebase()
   const [progress, setProgress] = useState(0)
   const [url, setUrl] = useState('')
 

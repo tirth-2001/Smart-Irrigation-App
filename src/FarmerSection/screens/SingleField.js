@@ -22,6 +22,7 @@ import Crop from '../../../assets/img/plant.png'
 import Water from '../../../assets/img/water1.png'
 import Irrigation from '../../../assets/img/sprinkler.png'
 import Farmer from '../../../assets/img/farmer.png'
+import tw from 'tailwind-react-native-classnames'
 
 import Header from '../../components/Header'
 
@@ -74,9 +75,9 @@ const data2 = [
     title: 'Crop Sown in Field',
     action: 'View More',
     img: Crop,
-    height: 155,
+    height: 135,
     width: 155,
-    top: -145,
+    top: -155,
     ml: 0,
     elevation: 10,
     cardData: [

@@ -15,6 +15,7 @@ import MyFields from './FarmerSection/screens/MyFields'
 import NewField from './FarmerSection/screens/NewField'
 import SingleField from './FarmerSection/screens/SingleField'
 import FarmerProfile from './FarmerSection/screens/FarmerProfile'
+import AdminProfile from './Admin/screens/ProfileScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,6 +34,7 @@ function Routes() {
           <Stack.Screen name="AdminHomeScreen" component={HomeScreen} />
           <Stack.Screen name="AdminProfileScreen" component={ProfileScreen} />
           <Stack.Screen name="AllFarmerScreen" component={AllFarmerScreen} />
+          <Stack.Screen name="AdminProfile" component={AdminProfile} />
           <Stack.Screen
             name="IrrigationSchedule"
             component={IrrigationSchedule}

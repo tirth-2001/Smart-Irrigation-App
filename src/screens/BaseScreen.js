@@ -4,9 +4,11 @@ import LottieView from 'lottie-react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import LoadingJson from '../../assets/lottie/loading.json'
 import {useAuth} from '../context/authContext'
+import {useFirebase} from '../hooks'
 
 const BaseScreen = ({navigation}) => {
-  const {currentUser} = useAuth()
+  const {currentUser, setCurrentUser} = useAuth()
+  const {getFarmerRole} = useFirebase()
   const opacity = React.useState(new Animated.Value(0))[0]
 
   const fadeIn = () => {
@@ -18,7 +20,16 @@ const BaseScreen = ({navigation}) => {
   }
 
   // function to fade in the view after delay of 3 seconds
-  React.useEffect(() => {
+  React.useEffect(async () => {
+    const isAdmin = currentUser && (await getFarmerRole(currentUser.uid))
+    // currentUser &&
+    setCurrentUser(currentUser => ({
+      uid: currentUser?.uid,
+      email: currentUser?.email,
+      isAdmin: isAdmin ? 'admin' : 'farmer',
+    }))
+
+    console.log('bbb', isAdmin)
     setTimeout(() => {
       fadeIn()
     }, 1500)
@@ -31,49 +42,60 @@ const BaseScreen = ({navigation}) => {
       </View>
       {/* <Text>BaseScreen</Text> */}
       <Animated.View style={[styles.animatedView, {opacity}]}>
-        <TouchableOpacity
-          onPress={() => {
-            currentUser
-              ? navigation.navigate('HomeFarmer')
-              : navigation.navigate('LoginScreen')
-          }}
-          activeOpacity={0.7}
-          style={[styles.btn, {backgroundColor: '#199333'}]}>
-          <Icon name="leaf" size={20} color="#fff" />
+        {currentUser?.isAdmin === 'admin' &&
+          navigation.navigate('AdminHomeScreen')}
+        {currentUser?.isAdmin === 'farmer' && navigation.navigate('HomeFarmer')}
+        {!currentUser && (
+          <>
+            <TouchableOpacity
+              onPress={() => {
+                currentUser
+                  ? navigation.navigate('HomeFarmer')
+                  : navigation.navigate('LoginScreen')
+              }}
+              activeOpacity={0.7}
+              style={[styles.btn, {backgroundColor: '#199333'}]}>
+              <Icon name="leaf" size={20} color="#fff" />
 
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginLeft: 10,
-              color: '#fff',
-            }}>
-            Farmer Login
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            currentUser
-              ? navigation.navigate('AdminHomeScreen')
-              : navigation.navigate('LoginScreen')
-          }}
-          activeOpacity={0.7}
-          style={[
-            styles.btn,
-            {backgroundColor: '#fff', borderColor: '#199333', borderWidth: 1},
-          ]}>
-          <Icon name="home" size={20} color="#199333" />
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  marginLeft: 10,
+                  color: '#fff',
+                }}>
+                Farmer Login
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                currentUser
+                  ? navigation.navigate('AdminHomeScreen')
+                  : navigation.navigate('LoginScreen')
+              }}
+              activeOpacity={0.7}
+              style={[
+                styles.btn,
+                {
+                  backgroundColor: '#fff',
+                  borderColor: '#199333',
+                  borderWidth: 1,
+                },
+              ]}>
+              <Icon name="home" size={20} color="#199333" />
 
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginLeft: 10,
-              color: '#199333',
-            }}>
-            Admin Login
-          </Text>
-        </TouchableOpacity>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  marginLeft: 10,
+                  color: '#199333',
+                }}>
+                Admin Login
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
       </Animated.View>
     </View>
   )
