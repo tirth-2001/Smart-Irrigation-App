@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   center: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 20,
   },
   btnText: {
     color: '#fff',
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
   },
   form: {
     marginTop: 40,
-    marginHorizontal: 25,
+    marginHorizontal: 15,
   },
-});
+})
 
-export default styles;
+export default styles

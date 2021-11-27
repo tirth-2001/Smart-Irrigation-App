@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Text,
@@ -7,18 +7,21 @@ import {
   TouchableNativeFeedback,
   Dimensions,
   TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import LinearGradient from 'react-native-linear-gradient';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import LinearGradient from 'react-native-linear-gradient'
 import {
   Menu,
   MenuOptions,
   MenuOption,
   MenuTrigger,
-} from 'react-native-popup-menu';
+} from 'react-native-popup-menu'
+import tailwind from 'tailwind-rn'
 
 const FieldCard = ({fieldData, navigation}) => {
-  const {name, area, crop, status, image} = fieldData || [];
+  const fallbackImage =
+    'https://firebasestorage.googleapis.com/v0/b/ssip-final.appspot.com/o/irrigation_app%2Futility%2Ffarm.png?alt=media&token=b1b62c86-3aa9-4e73-9831-93adc7072845'
+  const {fieldName, area, crop, waterRequirement, image} = fieldData || []
 
   return (
     <LinearGradient
@@ -49,7 +52,7 @@ const FieldCard = ({fieldData, navigation}) => {
         }}>
         <View>
           <Image
-            source={{uri: image}}
+            source={{uri: image || fallbackImage}}
             style={{width: 120, height: 80, borderRadius: 25}}
             resizeMode="center"
           />
@@ -63,7 +66,7 @@ const FieldCard = ({fieldData, navigation}) => {
                 textAlign: 'justify',
                 color: '#fff',
               }}>
-              {name}
+              {fieldName}
             </Text>
             <Text
               style={{
@@ -77,17 +80,43 @@ const FieldCard = ({fieldData, navigation}) => {
               }}>
               Crop Name : {crop}
             </Text>
-            <Text
-              style={{
-                fontSize: 13,
-                marginTop: 2,
-                width: Dimensions.get('window').width / 2 + 8,
-                height: 28,
-                textAlign: 'justify',
-                color: '#fff',
-              }}>
-              Field Area: {area}
-            </Text>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+              <Text
+                style={{
+                  fontSize: 15,
+                  marginTop: 8,
+                  // width: Dimensions.get('window').width / 4,
+                  height: 28,
+                  // textAlign: 'justify',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                }}>
+                Area : {area}
+              </Text>
+              <View
+                style={{
+                  borderRightWidth: 1,
+                  borderColor: '#fff',
+                  height: 28,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginLeft: 10,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 15,
+                  marginTop: 8,
+                  // width: Dimensions.get('window').width / 4,
+                  height: 18,
+                  // textAlign: 'justify',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  paddingLeft: 10,
+                }}>
+                Water : {waterRequirement}
+              </Text>
+            </View>
           </View>
         </View>
         <View
@@ -151,7 +180,9 @@ const FieldCard = ({fieldData, navigation}) => {
             width: '50%',
           }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('SingleField')}
+            onPress={() => {
+              navigation.navigate('SingleField', {fieldData})
+            }}
             activeOpacity={0.7}
             style={[styles.btn, {backgroundColor: '#fff'}]}>
             <Text
@@ -169,8 +200,8 @@ const FieldCard = ({fieldData, navigation}) => {
         </View>
       </View>
     </LinearGradient>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   btn: {
@@ -191,6 +222,6 @@ const styles = StyleSheet.create({
 
     // elevation: 7,
   },
-});
+})
 
-export default FieldCard;
+export default FieldCard

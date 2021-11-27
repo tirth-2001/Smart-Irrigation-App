@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import React from 'react'
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 const Card = ({
   title,
@@ -15,8 +15,7 @@ const Card = ({
   name,
   navigation,
 }) => {
-  var btnWidthPercent = btnWidth + '%';
-  console.log('Nav Name', name);
+  var btnWidthPercent = btnWidth + '%'
   return (
     <LinearGradient
       style={[styles.card, {marginBottom: mb, marginTop: mt}]}
@@ -32,16 +31,16 @@ const Card = ({
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() => {
-          navigation.navigate(name);
+          navigation.navigate(name)
         }}
         style={[styles.ctaBtn, {width: btnWidthPercent}]}>
         <Text style={styles.actionText}>{action}</Text>
       </TouchableOpacity>
     </LinearGradient>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
 
 const styles = StyleSheet.create({
   card: {
@@ -96,4 +95,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
     shadowRadius: 22,
   },
-});
+})

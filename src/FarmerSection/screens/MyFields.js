@@ -1,44 +1,28 @@
-import React from 'react';
-import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
-import Header from '../../components/Header';
-import FieldCard from '../components/FieldCard';
-import FieldFab from '../components/FieldFab';
+import React, {useState, useEffect} from 'react'
+import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
+import Header from '../../components/Header'
+import {database} from '../../config'
+import FieldCard from '../components/FieldCard'
+import FieldFab from '../components/FieldFab'
+import {useAuth} from '../../context/authContext'
 
 const MyFields = ({navigation}) => {
-  const fields = [
-    {
-      id: 1,
-      name: 'Field 1',
-      area: '10.5',
-      crop: 'Cotton',
-      status: 'Active',
-      image: 'https://picsum.photos/481/321',
-    },
-    {
-      id: 2,
-      name: 'Field 2',
-      area: '10.5',
-      crop: 'Cotton',
-      status: 'Active',
-      image: 'https://picsum.photos/484/324',
-    },
-    {
-      id: 3,
-      name: 'Field 3',
-      area: '10.5',
-      crop: 'Cotton',
-      status: 'Active',
-      image: 'https://picsum.photos/482/322',
-    },
-    {
-      id: 3,
-      name: 'Field 4',
-      area: '10.5',
-      crop: 'Cotton',
-      status: 'Active',
-      image: 'https://picsum.photos/483/323',
-    },
-  ];
+  const {currentUser} = useAuth()
+  const [fields, setFields] = useState([])
+
+  useEffect(() => {
+    const subscription = database.farmers
+      .doc(currentUser?.uid)
+      .onSnapshot(snapshot => {
+        const allFields = snapshot.data().fields
+
+        setFields(allFields)
+      })
+
+    return () => subscription()
+  }, [])
+
+  console.log(fields)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,8 +37,8 @@ const MyFields = ({navigation}) => {
       </ScrollView>
       <FieldFab navigation={navigation} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -69,6 +53,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
   },
-});
+})
 
-export default MyFields;
+export default MyFields

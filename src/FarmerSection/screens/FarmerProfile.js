@@ -1,26 +1,17 @@
 import React from 'react'
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  FlatList,
-  Animated,
-  SafeAreaView,
-} from 'react-native'
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import Header from '../../components/Header'
 import tailwind from 'tailwind-rn'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import {useAuth} from '../../context/authContext'
 
-const AdminProfile = ({navigation}) => {
+const FarmerProfile = ({navigation}) => {
   const {currentUser, logout} = useAuth()
+  console.log(`Current User from  ROuters${currentUser}`)
   return (
     <View style={styles.container}>
-      <Header name="Admin Profile" navigation={navigation} />
+      <Header name="Farmer Profile" navigation={navigation} />
 
       <View style={tailwind('flex flex-col justify-between mx-2')}>
         <Text style={tailwind('text-lg text-gray-900 font-bold')}>
@@ -32,6 +23,7 @@ const AdminProfile = ({navigation}) => {
           activeOpacity={0.8}
           onPress={() => {
             logout()
+            // navigation.navigate('BaseScreen')
           }}
           style={[
             tailwind(
@@ -82,4 +74,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default AdminProfile
+export default FarmerProfile

@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react'
 import {
   View,
   Text,
@@ -10,54 +10,112 @@ import {
   ScrollView,
   StatusBar,
   SafeAreaView,
-} from 'react-native';
-import HeaderFarmer from '../components/HeaderFarmer';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import BottomNavbarFarmer from '../components/BottomNavbarFarmer';
-import Swiper from 'react-native-swiper';
+  FlatList,
+} from 'react-native'
+import HeaderFarmer from '../components/HeaderFarmer'
+import {AnimatedCircularProgress} from 'react-native-circular-progress'
+import BottomNavbarFarmer from '../components/BottomNavbarFarmer'
+import {
+  Chart,
+  VerticalAxis,
+  HorizontalAxis,
+  Line,
+  Area,
+} from 'react-native-responsive-linechart'
 
-import SwiperCard from '../components/SwiperCard';
+import SwiperCard from '../components/SwiperCard'
 
 // Image Slides
-import Slide1 from '../../../assets/img/slide1.jpg';
-import Slide2 from '../../../assets/img/slide2.jpg';
-import Slide3 from '../../../assets/img/slide3.jpg';
+import Slide1 from '../../../assets/img/slide1.jpg'
+import Slide2 from '../../../assets/img/slide2.jpg'
+import Slide3 from '../../../assets/img/slide3.jpg'
+import tailwind from 'tailwind-rn'
 
 const HomeFarmer = ({navigation}) => {
-  const progress = useRef(null);
+  const progress = useRef(null)
   useEffect(() => {
-    progress.current.animate(100, 3000, Easing.quad);
-  }, []);
+    progress.current.animate(100, 3000, Easing.quad)
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
       <HeaderFarmer />
 
       <View style={{height: 250}}>
-        <ScrollView
+        <FlatList
+          style={tailwind('mt-8 mx-2 flex flex-1')}
+          data={[Slide1, Slide2, Slide3]}
+          ItemSeparatorComponent={() => <View style={tailwind('mx-2')} />}
           horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[styles.scrollContainer]}>
-          <SwiperCard imgURL={Slide1} />
-          <SwiperCard imgURL={Slide2} />
-          <SwiperCard imgURL={Slide3} />
-        </ScrollView>
+          pagingEnabled
+          showsHorizontalScrollIndicator={true}
+          renderItem={({item}) => <SwiperCard imgURL={item} />}
+        />
       </View>
 
       <AnimatedCircularProgress
         ref={progress}
         size={120}
         width={25}
-        fill={90}
+        fill={0}
         tintColor="#199333"
         backgroundColor="#e2e2e2"
       />
 
+      <Chart
+        style={{height: 200, width: 400}}
+        padding={{left: 40, bottom: 20, right: 20, top: 20}}
+        xDomain={{min: -2, max: 10}}
+        yDomain={{min: 0, max: 20}}>
+        <VerticalAxis
+          tickCount={10}
+          theme={{labels: {formatter: v => v.toFixed(2)}}}
+        />
+        <HorizontalAxis />
+        <Area
+          theme={{
+            gradient: {
+              from: {color: '#1abc9c', opacity: 0.4},
+              to: {color: '#1abc9c', opacity: 0.4},
+            },
+          }}
+          smoothing="cubic-spline"
+          data={[
+            {x: -2, y: 15},
+            {x: -1, y: 10},
+            {x: 0, y: 12},
+            {x: 5, y: 8},
+            {x: 6, y: 12},
+            {x: 9, y: 13.5},
+            {x: 10, y: 15},
+          ]}
+        />
+        <Area
+          theme={{
+            gradient: {
+              from: {color: '#f39c12', opacity: 0.4},
+              to: {color: '#f39c12', opacity: 0.4},
+            },
+          }}
+          smoothing="cubic-spline"
+          data={[
+            {x: -2, y: 0},
+            {x: -1, y: 2},
+            {x: 0, y: 7},
+            {x: 2, y: 5},
+            {x: 3, y: 12},
+            {x: 7, y: 16},
+            {x: 9, y: 17},
+            {x: 10, y: 12},
+          ]}
+        />
+      </Chart>
+
       {/* Bottom Navbar */}
       <BottomNavbarFarmer navigation={navigation} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -72,6 +130,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     width: Dimensions.get('window').width - 20,
   },
-});
+})
 
-export default HomeFarmer;
+export default HomeFarmer

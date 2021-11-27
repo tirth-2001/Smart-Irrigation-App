@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const FieldFab = ({navigation}) => {
   return (
@@ -9,13 +9,13 @@ const FieldFab = ({navigation}) => {
         activeOpacity={0.7}
         style={styles.fab}
         onPress={() => navigation.navigate('NewField')}>
-        <Icon name="plus" size={20} color="#199333" />
+        <Icon name="plus" size={20} color="#fff" />
 
         {/* <Text style={styles.fabText}>New Field</Text> */}
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 {
   /*  */
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     margin: 20,
     right: 0,
     bottom: 0,
-    backgroundColor: '#fff',
+    backgroundColor: '#199333',
     height: 50,
     width: 50,
     borderRadius: 50,
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-});
+})
 
-export default FieldFab;
+export default FieldFab

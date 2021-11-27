@@ -1,7 +1,15 @@
-import React from 'react';
-import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
-import Header from '../../components/Header';
-import IrrigationCard from '../components/IrrigationCard';
+import React from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native'
+import Header from '../../components/Header'
+import IrrigationCard from '../components/IrrigationCard'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const IrrigationSchedule = ({navigation}) => {
   const irrigations = [
@@ -75,7 +83,7 @@ const IrrigationSchedule = ({navigation}) => {
       fieldArea: 600,
       waterRequirement: 200,
     },
-  ];
+  ]
 
   return (
     <SafeAreaView style={styles.container}>
@@ -94,9 +102,16 @@ const IrrigationSchedule = ({navigation}) => {
         )}
         <View style={styles.dummy}></View>
       </ScrollView>
+      <View>
+        <TouchableOpacity
+          style={styles.newIrrigation}
+          onPress={() => navigation.navigate('NewIrrigation')}>
+          <Icon name="plus" size={20} color="#fff" />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -106,6 +121,27 @@ const styles = StyleSheet.create({
   dummy: {
     height: 100,
   },
-});
+  newIrrigation: {
+    position: 'absolute',
+    flexDirection: 'row',
+    margin: 20,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#199333',
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+})
 
-export default IrrigationSchedule;
+export default IrrigationSchedule

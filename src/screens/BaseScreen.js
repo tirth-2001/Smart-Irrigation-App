@@ -1,27 +1,39 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
-import LottieView from 'lottie-react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import LoadingJson from '../../assets/lottie/loading.json';
+import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native'
+import LottieView from 'lottie-react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import LoadingJson from '../../assets/lottie/loading.json'
+import {useAuth} from '../context/authContext'
+import {useFirebase} from '../hooks'
 
 const BaseScreen = ({navigation}) => {
-  const opacity = React.useState(new Animated.Value(0))[0];
+  const {currentUser, setCurrentUser} = useAuth()
+  const {getFarmerRole} = useFirebase()
+  const opacity = React.useState(new Animated.Value(0))[0]
 
   const fadeIn = () => {
     Animated.timing(opacity, {
       toValue: 1,
       duration: 2000,
       useNativeDriver: true,
-    }).start();
-  };
+    }).start()
+  }
 
   // function to fade in the view after delay of 3 seconds
-  React.useEffect(() => {
+  React.useEffect(async () => {
+    const isAdmin = currentUser && (await getFarmerRole(currentUser.uid))
+    // currentUser &&
+    setCurrentUser(currentUser => ({
+      uid: currentUser?.uid,
+      email: currentUser?.email,
+      isAdmin: isAdmin,
+    }))
+
+    console.log('bbb', isAdmin)
     setTimeout(() => {
-      fadeIn();
-    }, 1500);
-  }, []);
+      fadeIn()
+    }, 1500)
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -31,7 +43,9 @@ const BaseScreen = ({navigation}) => {
       {/* <Text>BaseScreen</Text> */}
       <Animated.View style={[styles.animatedView, {opacity}]}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('HomeFarmer')}
+          onPress={() => {
+            navigation.navigate('LoginScreen')
+          }}
           activeOpacity={0.7}
           style={[styles.btn, {backgroundColor: '#199333'}]}>
           <Icon name="leaf" size={20} color="#fff" />
@@ -47,11 +61,17 @@ const BaseScreen = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LoginScreen')}
+          onPress={() => {
+            navigation.navigate('LoginScreen')
+          }}
           activeOpacity={0.7}
           style={[
             styles.btn,
-            {backgroundColor: '#fff', borderColor: '#199333', borderWidth: 1},
+            {
+              backgroundColor: '#fff',
+              borderColor: '#199333',
+              borderWidth: 1,
+            },
           ]}>
           <Icon name="home" size={20} color="#199333" />
 
@@ -67,8 +87,8 @@ const BaseScreen = ({navigation}) => {
         </TouchableOpacity>
       </Animated.View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -108,6 +128,6 @@ const styles = StyleSheet.create({
 
     // elevation: 7,
   },
-});
+})
 
-export default BaseScreen;
+export default BaseScreen
