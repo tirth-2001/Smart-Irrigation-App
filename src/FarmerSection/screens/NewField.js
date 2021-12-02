@@ -147,7 +147,7 @@ const NewField = ({navigation}) => {
       },
     })
       .then(res => {
-        setPerGWater(res.data)
+        setPerGWater(res.data / 1000000000000)
         setCheckAPI(3)
       })
       .catch(err => {
@@ -201,7 +201,7 @@ const NewField = ({navigation}) => {
           <TextInput
             style={styles.input}
             keyboardType="decimal-pad"
-            placeholder="Water Requirement (gallons/month)"
+            placeholder="Water Requirement (gallons/day)"
             value={waterReq}
             onChangeText={e => setWaterReq(e)}
           />
@@ -393,11 +393,14 @@ const NewField = ({navigation}) => {
 
           <View style={{marginTop: 10}}>
             <Text style={{fontSize: 16}}>
-              Per 100Sq = {perGWater === null ? 'NILL' : perGWater + 'Gallon'}
+              Per 100Sq ={' '}
+              {perGWater === null ? 'NILL' : Math.round(perGWater) + ' Gallon'}
             </Text>
             <Text style={{marginTop: 5, fontSize: 16}}>
               Total Water Required =
-              {perGWater === null ? 'NILL' : area * perGWater}
+              {perGWater === null
+                ? 'NILL'
+                : Math.round((area * perGWater) / 100) + ' Gallon/day'}
             </Text>
           </View>
         </View>
