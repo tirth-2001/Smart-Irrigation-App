@@ -37,6 +37,11 @@ const HomeFarmer = ({navigation}) => {
     progress.current.animate(100, 3000, Easing.quad)
   }, [])
 
+  const crashTest = () => {
+    console.log('Crash Test')
+    throw new Error('Crash Test')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <HeaderFarmer />
@@ -52,6 +57,14 @@ const HomeFarmer = ({navigation}) => {
           renderItem={({item}) => <SwiperCard imgURL={item} />}
         />
       </View>
+
+      <TouchableOpacity
+        style={tailwind('mt-8 mx-2 p-2 bg-red-500')}
+        onPress={() => crashTest()}>
+        <Text style={tailwind('text-white text-center text-xl')}>
+          Crash Test
+        </Text>
+      </TouchableOpacity>
 
       <AnimatedCircularProgress
         ref={progress}
