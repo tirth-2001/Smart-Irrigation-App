@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native'
 import LottieView from 'lottie-react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
@@ -14,25 +14,22 @@ const BaseScreen = ({navigation}) => {
   const fadeIn = () => {
     Animated.timing(opacity, {
       toValue: 1,
-      duration: 2000,
+      duration: 700,
       useNativeDriver: true,
     }).start()
   }
 
-  // function to fade in the view after delay of 3 seconds
   React.useEffect(async () => {
     const isAdmin = currentUser && (await getFarmerRole(currentUser.uid))
-    // currentUser &&
     setCurrentUser(currentUser => ({
       uid: currentUser?.uid,
       email: currentUser?.email,
       isAdmin: isAdmin,
     }))
 
-    console.log('bbb', isAdmin)
     setTimeout(() => {
       fadeIn()
-    }, 1500)
+    }, 100)
   }, [])
 
   return (
@@ -40,11 +37,10 @@ const BaseScreen = ({navigation}) => {
       <View style={styles.animationWrapper}>
         <LottieView source={LoadingJson} autoPlay loop speed={2} />
       </View>
-      {/* <Text>BaseScreen</Text> */}
       <Animated.View style={[styles.animatedView, {opacity}]}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('LoginScreen')
+            navigation.navigate('LoginScreen', {isFarmerLogin: true})
           }}
           activeOpacity={0.7}
           style={[styles.btn, {backgroundColor: '#199333'}]}>

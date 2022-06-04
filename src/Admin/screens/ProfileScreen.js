@@ -1,15 +1,5 @@
 import React from 'react'
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  FlatList,
-  Animated,
-  SafeAreaView,
-} from 'react-native'
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
 import Header from '../../components/Header'
 import tailwind from 'tailwind-rn'
@@ -22,10 +12,9 @@ const AdminProfile = ({navigation}) => {
     <View style={styles.container}>
       <Header name="Admin Profile" navigation={navigation} />
 
-      <View style={tailwind('flex flex-col justify-between mx-2')}>
-        <Text style={tailwind('text-lg text-gray-900 font-bold')}>
+      <View style={tailwind('flex flex-col justify-between mx-5')}>
+        <Text style={tailwind('text-lg text-gray-900 font-bold mt-4')}>
           Email : {currentUser?.email}
-          Role : {currentUser?.isAdmin}
         </Text>
 
         <TouchableOpacity

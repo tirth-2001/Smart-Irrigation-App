@@ -25,8 +25,6 @@ import NewIrrigation from './Admin/screens/NewIrrigation'
 function Routes() {
   const {currentUser} = useAuth()
 
-  console.log('routes cure' + JSON.stringify(currentUser))
-
   return (
     <>
       <NavigationContainer>

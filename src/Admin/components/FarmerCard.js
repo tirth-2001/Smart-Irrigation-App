@@ -27,9 +27,11 @@ const FarmerCard = ({farmerData}) => {
     <View
       style={{
         height: 180,
-        width: '40%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '42%',
         padding: 10,
-        marginHorizontal: 10,
+        marginHorizontal: 12,
         marginTop: 24,
         borderRadius: 15,
         elevation: 7,

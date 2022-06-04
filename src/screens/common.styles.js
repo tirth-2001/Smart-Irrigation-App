@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   imgWrapper: {
     position: 'absolute',
-    right: 20,
+    right: -10,
     bottom: -10,
     width: '70%',
   },

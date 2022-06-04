@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useMemo} from 'react'
 import {View, Text, StyleSheet, Image, SafeAreaView} from 'react-native'
 import Card from '../components/Card'
 
@@ -9,17 +9,11 @@ import BottomNavbar from '../components/BottomNavbar'
 import {useFirebase} from '../../hooks'
 
 const HomeScreen = ({navigation}) => {
-  const {totalWater, farmers: allFarmers} = useFirebase()
-  // const [allFarmers, setAllFarmers] = useState([])
-  // const [totalWater, setTotalWater] = useState(0)
+  const {farmers} = useFirebase()
 
-  // const preloadStatistic = async () => {
-  //   setTotalWater(await getTotalWaterIrrigation())
-  // }
-
-  // useEffect(() => {
-  //   preloadStatistic()
-  // }, [])
+  const farmersCount = useMemo(() => {
+    return !!farmers.length ? farmers.length : 0
+  }, [farmers])
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -44,7 +38,7 @@ const HomeScreen = ({navigation}) => {
           marginTop: 60,
         }}>
         <Card
-          title={`${allFarmers?.length}+ Farmer Registered for SIS`}
+          title={`${farmersCount} Farmers Registered`}
           action="View All ➔"
           img={Farmer}
           height={245}

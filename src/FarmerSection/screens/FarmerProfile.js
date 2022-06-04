@@ -8,7 +8,6 @@ import {useAuth} from '../../context/authContext'
 
 const FarmerProfile = ({navigation}) => {
   const {currentUser, logout} = useAuth()
-  console.log(`Current User from  ROuters${currentUser}`)
   return (
     <View style={styles.container}>
       <Header name="Farmer Profile" navigation={navigation} />
@@ -16,7 +15,6 @@ const FarmerProfile = ({navigation}) => {
       <View style={tailwind('flex flex-col justify-between mx-2')}>
         <Text style={tailwind('text-lg text-gray-900 font-bold')}>
           Email : {currentUser?.email}
-          Role : {currentUser?.isAdmin}
         </Text>
 
         <TouchableOpacity

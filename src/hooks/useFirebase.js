@@ -16,6 +16,7 @@ import {useState, useEffect, useMemo} from 'react'
     writable: true,
   })
 })()
+
 const getTotalWaterIrrigation = farmers => {
   return farmers
     .reduce((prev, curr) => {
@@ -26,7 +27,7 @@ const getTotalWaterIrrigation = farmers => {
 }
 
 export const useFirebase = () => {
-  const {currentUser, setCurrentUser} = useAuth()
+  const {currentUser} = useAuth()
   const [farmers, setFarmers] = useState([])
   const totalWater = useMemo(() => getTotalWaterIrrigation(farmers), [farmers])
 
@@ -40,24 +41,18 @@ export const useFirebase = () => {
   }
 
   const getFarmerRole = async uid => {
-    console.log('getting farmer', uid)
+    if (!uid) return false
     const farmer = uid && (await database.farmers.doc(uid).get())
 
-    const {isAdmin} = farmer.data()
-    console.log('aa', isAdmin)
+    const {isAdmin} = farmer && farmer.data()
     return isAdmin
   }
 
-  // getFarmerRole('moao40zx3HOIENLz4bGZZ74EjKY2')
-
   const newField = async field => {
-    // console.log(field, uid)
     const data = await database.farmers.doc(currentUser.uid).get()
     const {fields} = data.data()
-    console.log('Fields', fields?.length)
 
     const newFields = fields ? [...fields, field] : [field]
-    console.log('new', newFields.length)
 
     await database.farmers.doc(currentUser.uid).update({
       fields: newFields,
@@ -65,9 +60,7 @@ export const useFirebase = () => {
   }
 
   useEffect(async () => {
-    console.log('useEffect')
     database.farmers.onSnapshot(async snap => {
-      console.log('snap', snap.docs)
       const data = await (snap.size > 0 ? snap.docs : []).map(doc => ({
         ...doc.data(),
         id: doc.id,
@@ -75,13 +68,6 @@ export const useFirebase = () => {
       setFarmers(data)
     })
   }, [])
-
-  // useEffect(async () => {
-  //   console.log('useEffect 2')
-  //   const {isAdmin} = currentUser && (await getFarmerRole(currentUser.uid))
-  //   console.log('isAdmin', isAdmin)
-  //   setCurrentUser({...currentUser, isAdmin: isAdmin})
-  // }, [])
 
   return {newFarmer, newField, farmers, totalWater, getFarmerRole}
 }
