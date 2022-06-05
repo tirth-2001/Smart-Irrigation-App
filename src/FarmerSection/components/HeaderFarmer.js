@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   View,
   Text,
@@ -9,26 +9,17 @@ import {
   ScrollView,
   Share,
   Button,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Badge} from 'react-native-paper';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import {Badge} from 'react-native-paper'
 
 const Header = ({route, navigation}) => {
-  const [lastOpenVariable, setLastOpenVariable] = useState('');
-  const [lastOpenVariable1, setLastOpenVariable1] = useState('');
-  const [showBadge, setShowBadge] = useState(true);
-  const [badgeValue, setBadgeValue] = useState(0);
-  const [flagValue, setFlagValue] = useState(true);
-  const [dummy, setDummy] = useState('A');
-  const [isLoading, setIsLoading] = useState(false);
-  const [tempValue, setTempValue] = useState(false);
-
   const onShare = async () => {
     try {
       const result = await Share.share({
         message:
           'Smart Irrigation System 🌱\nMobile App 📱 \n\nDownload this app now... 👇 \n\nGoogle Playstore Link : \nhttps://play.google.com/store/apps',
-      });
+      })
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
           // shared with activity type of result.activityType
@@ -39,9 +30,9 @@ const Header = ({route, navigation}) => {
         // dismissed
       }
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
-  };
+  }
 
   return (
     <View style={styles.header}>
@@ -92,8 +83,8 @@ const Header = ({route, navigation}) => {
         </TouchableOpacity>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   header: {
@@ -121,6 +112,6 @@ const styles = StyleSheet.create({
     width: 250,
     borderWidth: 1,
   },
-});
+})
 
-export default Header;
+export default Header
