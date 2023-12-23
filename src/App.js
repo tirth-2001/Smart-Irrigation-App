@@ -4,7 +4,7 @@ import Routes from './Routes'
 import {MenuProvider} from 'react-native-popup-menu'
 import {AuthProvider} from './context'
 
-// TODO:
+// TODO :-
 // 1. Profile screens of Admin and Farmer - complete as per requirement
 // 2. Store current user in local storage and on opening app, fetch local storage to redirect user to his section
 // 3. In Sign Up and Login section we can put keyboard avaoiding view or similar to that. Bcoz plants are coming up when keyboard is showing which obstructs the visibiity og=f form
